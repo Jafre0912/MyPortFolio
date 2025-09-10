@@ -1,0 +1,100 @@
+/* --- No changes needed for .mask and .into-img, they are perfect --- */
+.mask {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.into-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+.mask::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.8;
+}
+
+/* --- MODIFIED SECTION STARTS HERE --- */
+
+.hero {
+  height: 100%;
+  width: 100%;
+}
+
+.hero .content {
+  /* This part remains the same for perfect centering */
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+
+  /* --- NEW: Using Flexbox for cleaner alignment and spacing --- */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This replaces 'text-align: center' */
+  gap: 0.5rem; /* This now controls the space between all items */
+  width: 90%; /* Added width to prevent text from touching screen edges */
+  max-width: 800px; /* Ensures content doesn't get too wide on large screens */
+}
+
+.hero .content h1 {
+  font-size: 4rem;
+  /* Removed padding to let 'gap' handle spacing */
+}
+
+.hero .content p {
+  font-size: 1.4rem;
+  font-weight: 200;
+  text-transform: uppercase;
+  margin: 0; /* Removing default paragraph margins */
+}
+
+/* This is your special paragraph for the 'DSA enthusiast' line */
+.hero .content .p {
+  text-transform: none; /* Resetting the uppercase from the rule above */
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 1.5rem; /* Adding space only before the buttons */
+}
+
+.content .btn {
+  margin: 0.5rem; /* Simplified margin for buttons */
+}
+
+/* --- MODIFIED & IMPROVED MEDIA QUERY --- */
+
+@media screen and (max-width: 640px) {
+  .hero .content {
+    gap: 0.8rem; /* Slightly adjust gap for mobile if needed */
+  }
+
+  .hero .content h1 {
+    font-size: 3rem; /* Your original change, which is great */
+  }
+
+  .hero .content p {
+    font-size: 1.2rem; /* Making the main paragraph slightly smaller on mobile */
+  }
+
+  .hero .content .p {
+    font-size: 1rem; /* Making the secondary paragraph smaller too */
+    margin-bottom: 1.2rem;
+  }
+
+  /* Style for your new 'p1' introduction paragraph */
+
+}
+.hero .content .p1 {
+  color: green; /* A nice light pink for the theme */
+  text-transform: none; /* Prevents it from becoming all uppercase */
+  font-weight: 400; /* Makes it slightly bolder and easier to read */
+}
